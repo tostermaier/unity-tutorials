@@ -32,8 +32,8 @@ public class SimplePlayerController : MonoBehaviour
 
     private void Movement()
     {
-        float x = Input.GetAxis(Constants.HORIZONTAL_AXIS);
-        float z = Input.GetAxis(Constants.VERTICAL_AXIS);
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
 
@@ -46,8 +46,8 @@ public class SimplePlayerController : MonoBehaviour
     //Handle mouse look
     private void MouseLook()
     {
-        float mouseX = Input.GetAxis(Constants.MOUSE_X_AXIS) * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis(Constants.MOUSE_Y_AXIS) * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
        
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
@@ -55,6 +55,5 @@ public class SimplePlayerController : MonoBehaviour
         playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
-
 
 }
